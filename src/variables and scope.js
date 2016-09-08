@@ -86,36 +86,36 @@ function jobArrived( s : Switch, job : Job )
 	function(){ // Scope level 2
 		if(true) var x = 1; // Ok
 		/*
-		if(true){ // ***CRASH***
-			var x = 1;
+		if(true){
+			var x = 1; // ***CRASH***
 		}
 		*/
 		function(){ // Scope level 3
 			if(true) var x = 2; // Ok
 			/*
-			if(true){ // ***CRASH***
-				var x = 2;
+			if(true){
+				var x = 2; // ***CRASH***
 			}
 			*/
 			function(){ // Scope level 4
 				if(true) var x = 3; // Ok
 				/*
-				if(true){ // ***CRASH***
-					var x = 3;
+				if(true){
+					var x = 3; // ***CRASH***
 				}
 				*/
 				function(){ // Scope level 5
 					if(true) var x = 4; // Ok
 					/*
-					if(true){ // ***CRASH***
-						var x = 4;
+					if(true){
+						var x = 4; // ***CRASH***
 					}
 					*/
 					function(){ // Scope level 6
 						if(true) var x = 5; // Ok
 						/*
-						if(true){ // ***CRASH***
-							var x = 5;
+						if(true){
+							var x = 5; // ***CRASH***
 						}
 						*/
 					}();
