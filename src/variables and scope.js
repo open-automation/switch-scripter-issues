@@ -43,7 +43,7 @@ function jobArrived( s : Switch, job : Job )
 	}();
 
 
-	/* Declaring variables in any top level function scope is fine 				*/
+	/* Declaring block variables in any top level function scope is fine 				*/
 
 	if(true){ // Block 1
 		var x = 1;
