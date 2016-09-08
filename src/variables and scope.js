@@ -42,4 +42,99 @@ function jobArrived( s : Switch, job : Job )
 		}
 	}();
 
+
+	/* Declaring variables in any top level function scope is fine 				*/
+
+	if(true){ // Block 1
+		var x = 1;
+		if(true){ // Block 2
+			var x = 2;
+			if(true){ // Block 3
+				var x = 3;
+				if(true){ // Block 4
+					var x = 4;
+					if(true){ // Block 5
+						var x = 5;
+					}
+				}
+			}
+		}
+	}
+
+	/* Declaring variables in any function scope, outside of blocks, is fine 	*/
+
+	function(){ // Scope level 2
+		var x = 1;
+		function(){ // Scope level 3
+			var x = 2;
+			function(){ // Scope level 4
+				var x = 3;
+				function(){ // Scope level 5
+					var x = 4;
+					function(){ // Scope level 6
+						var x = 5;
+					}();
+				}();
+			}();
+		}();
+	}();
+
+
+	/* Declaring variables in any function scope, outside of blocks, is fine.
+		You can even use if/else without declaring a block {}.					*/
+
+	function(){ // Scope level 2
+		if(true) var x = 1; // Ok
+		/*
+		if(true){ // ***CRASH***
+			var x = 1;
+		}
+		*/
+		function(){ // Scope level 3
+			if(true) var x = 2; // Ok
+			/*
+			if(true){ // ***CRASH***
+				var x = 2;
+			}
+			*/
+			function(){ // Scope level 4
+				if(true) var x = 3; // Ok
+				/*
+				if(true){ // ***CRASH***
+					var x = 3;
+				}
+				*/
+				function(){ // Scope level 5
+					if(true) var x = 4; // Ok
+					/*
+					if(true){ // ***CRASH***
+						var x = 4;
+					}
+					*/
+					function(){ // Scope level 6
+						if(true) var x = 5; // Ok
+						/*
+						if(true){ // ***CRASH***
+							var x = 5;
+						}
+						*/
+					}();
+				}();
+			}();
+		}();
+	}();
+
+
+	/* Declaring variables */
+
+	// Multiple variables can be declared in a single go
+	var a, b, c, d, e;
+
+	// Multiple variables can be declared and assigned in a single go
+	var 	a = 1,
+			b = 2,
+			c = 3,
+			d = 4,
+			e = 5;
+
 }
